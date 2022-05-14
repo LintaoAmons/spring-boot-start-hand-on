@@ -33,7 +33,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
         </dependency>
-        <!-- ms-user 自动配置的 Starter -->
+
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>ms-user-api</artifactId>
