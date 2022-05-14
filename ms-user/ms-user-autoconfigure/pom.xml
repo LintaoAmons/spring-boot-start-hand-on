@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>ms-user</artifactId>
+        <groupId>com.example</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>ms-user-autoconfigure</artifactId>
+    <name>ms-user-autoconfigure</name>
+    <description>ms-user的自动配置模块</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>ms-user-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+    <!--    我不加这个会导致 install 失败，原因是找不到 main class，但是看up的配置没有这个问题的样子-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>none</mainClass>     <!-- 取消查找本项目下的Main方法：为了解决Unable to find main class的问题 -->
+                    <classifier>execute</classifier>    <!-- 为了解决依赖模块找不到此模块中的类或属性 -->
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
