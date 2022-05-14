@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration(proxyBeanMethods = false) // TODO 这里的 proxyBeanMethods 是什么作用
 @ConfigurationProperties(prefix = "cnmemset.ms-user")
 public class MsUserConfiguration {
-    private String url = "127.0.0.1:8080";
+    private String url = "127.0.0.1:8888";
 
     public String getUrl() {
         return url;
