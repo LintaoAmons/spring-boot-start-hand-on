@@ -1,6 +1,14 @@
 # 删除了 fallbackFactory，程序能够启动，但是call不通
 > commit hash: 6c92d501c329d1f5f7406fcf6a1b9f085e42e8d9
 
+## Solved
+
+因为我 copy 过来的 `application.yml` 里面的端口，和我程序实际运行的端口不一致。
+
+- Error: `java.net.ConnectException: Connection refused (Connection refused)`
+  - Action: 检查 Domain, 端口, etc. 是否一致
+
+## Logs
 ```bash
 2022-05-14 12:09:22.603 [main] INFO  org.apache.coyote.http11.Http11NioProtocol::log - Starting ProtocolHandler ["http-nio-12080"]
 2022-05-14 12:09:22.619 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer::start - Tomcat started on port(s): 12080 (http) with context path ''
