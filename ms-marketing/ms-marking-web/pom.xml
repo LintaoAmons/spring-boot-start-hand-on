@@ -36,7 +36,7 @@
 
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>ms-user-api</artifactId>
+            <artifactId>ms-user-spring-boot-starter</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

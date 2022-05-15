@@ -16,7 +16,7 @@ spring:
 
 feign:
   circuitbreaker:
-    enabled: true
+    enabled: true  # 启用了熔断器功能
 
 cnmemset:
   ms-user:
