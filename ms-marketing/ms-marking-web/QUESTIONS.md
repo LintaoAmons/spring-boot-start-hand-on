@@ -1,4 +1,4 @@
-# 删除了 fallbackFactory，程序能够启动，但是call不通
+# ✅ 删除了 fallbackFactory，程序能够启动，但是call不通
 > commit hash: 6c92d501c329d1f5f7406fcf6a1b9f085e42e8d9
 
 ## Solved
@@ -74,9 +74,18 @@ java.net.ConnectException: Connection refused (Connection refused)
         at java.lang.Thread.run(Thread.java:748)
 ```
 
-# 好像没找到 FeignClient 的实现类
+# ✅ 好像没找到 FallbackFactory 的实现类
 > commit hash : `5093cfbff6557101533f2f7ad6cb0835d7036e10`
 
+## Cause
+
+是因为 `ms-marketing-web` 启动时，只会扫描自己包路径及其子路径的package，所以找不到写在 `ms-user-api` 下的 `UserFallbackFactory` 的实现
+
+- ⚠️ 但是为什么我在 commit `bf6ff5f90eaa3aa4a2538b1157cc7b2456ff717f` 手动注入 bean 也不行呢？难道是个时候只是因为 port 写错了，而不是找不到 bean 报的错？
+  - ✅ 找到原因了，`@Configuration`+`@Bean` 也能成功，只是当时的 BeanType 写错了。
+
+
+## Logs
 ```bash
 2022-05-14 11:34:13.660 [main] INFO  org.apache.catalina.core.StandardEngine::log - Starting Servlet engine: [Apache Tomcat/9.0.62]
 2022-05-14 11:34:13.781 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]::log - Initializing Spring embedded WebApplicationContext
